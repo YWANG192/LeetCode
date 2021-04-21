@@ -4,25 +4,26 @@ class Solution:
         nums.sort()
         res = sum(nums[:3])
         
-        for i in range(len(nums) - 2):
+        for i in range(len(nums)-2):
             
-            s = i+1
-            e = len(nums) -1
+            l, r = i+1, len(nums)-1
             
-            
-            while s < e:
+            while l < r:
                 
-                sumhere = nums[i] + nums[s] + nums [e]
+                temp_sum = nums[i] + nums[l] + nums[r]
                 
-                if abs (sumhere - target) < abs(res - target):
-                    res = sumhere
+                temp_diff = abs(temp_sum - target)
                 
-                if sumhere < target:
+                res_diff = abs(res - target)
+                
+                if temp_diff < res_diff:
+                    res = temp_sum
+                
+                if temp_sum - target > 0:
+                    r -=1
+                
+                if temp_sum - target <=0:
                     
-                    s += 1
-                    
-                else:
-                    
-                    e -= 1
+                    l += 1
         
-        return res 
+        return res
