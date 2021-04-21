@@ -1,6 +1,9 @@
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         
+        if len(nums) <= 3:
+            return sum(nums)
+        
         nums.sort()
         res = sum(nums[:3])
         
